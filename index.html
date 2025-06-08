@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escaneo de Pedidos - Demo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+    }
+    .contenedor {
+      padding: 1rem;
+      background: white;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    input[type="file"], input[type="text"], input[type="url"], select, button {
+      width: 100%; max-width: 600px;
+      margin: 0.5rem auto;
+      display: block;
+      font-size: 1.1rem;
+      padding: 0.5rem;
+    }
+    button {
+      cursor: pointer;
+      background: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover { background: #125aa0; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th { background: #f2f2f2; }
+    .completo { background: #c8e6c9; }
+    .exceso { background: #ffcdd2; }
+    .error {
+      color: red;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    #historial {
+      padding-top: 1rem;
+      font-size: 0.9rem;
+    }
+    #mensaje-temporal {
+      color: red;
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Escaneo de Productos</h1>
+
+    <input type="url" id="sheetUrl" placeholder="URL pública de Google Sheets">
+    <button onclick="cargarDesdeSheet()">Cargar</button>
+
+    <select id="pedidoSelect"></select>
+    <input type="number" id="multiplicador" value="10" min="1" placeholder="Cantidad por escaneo">
+    <input type="text" id="barcodeInput" placeholder="Escanea código de barras" autofocus>
+    <button onclick="exportarResumen()">Exportar resumen</button>
+    <button onclick="guardarHistorial()">Guardar historial</button>
+    <button onclick="verHistorial()">Ver historial</button>
+
+    <div id="errores" class="error"></div>
+    <div id="mensaje-temporal"></div>
+    <table id="pedidoTable"></table>
+    <div id="historial"></div>
+  </div>
+
+  <audio id="sonido-ok" preload="auto">
+    <source src="/ok.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="sonido-error" preload="auto">
+    <source src="/error.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script>
+    // Código JavaScript omitido por longitud...
+  </script>
+</body>
+</html>
